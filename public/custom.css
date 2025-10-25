@@ -1,0 +1,67 @@
+/* Custom CSS for Chainlit App */
+
+/* Increase chatbot avatar size */
+.avatar {
+    width: 80px !important;
+    height: 80px !important;
+    min-width: 80px !important;
+    min-height: 80px !important;
+}
+
+/* Alternative selector for chatbot avatar */
+.message-avatar {
+    width: 80px !important;
+    height: 80px !important;
+    min-width: 80px !important;
+    min-height: 80px !important;
+}
+
+/* Another possible selector for assistant avatar */
+.assistant-avatar {
+    width: 80px !important;
+    height: 80px !important;
+    min-width: 80px !important;
+    min-height: 80px !important;
+}
+
+/* Target avatar images specifically */
+img.avatar {
+    width: 80px !important;
+    height: 80px !important;
+    object-fit: cover !important;
+}
+
+/* More specific selector for Chainlit avatar containers */
+div[data-testid="avatar"] {
+    width: 80px !important;
+    height: 80px !important;
+}
+
+/* Target the assistant message avatar specifically */
+.message-container .avatar {
+    width: 80px !important;
+    height: 80px !important;
+}
+
+/* Fading animation for loading messages */
+@keyframes fadeInOut {
+    0% { opacity: 0.3; }
+    50% { opacity: 1; }
+    100% { opacity: 0.3; }
+}
+
+/* Apply fading animation ONLY to thinking/loading messages */
+/* Target messages that contain specific loading text */
+.cl-message[data-content*="Thinking"],
+.cl-message[data-content*="Loading"],
+.cl-message[data-content*="Processing"],
+div[data-content*="Thinking"],
+div[data-content*="Loading"],
+div[data-content*="Processing"] {
+    animation: fadeInOut 1.5s ease-in-out infinite;
+}
+
+/* Remove animation from all other messages */
+.cl-message:not([data-content*="Thinking"]):not([data-content*="Loading"]):not([data-content*="Processing"]) {
+    animation: none !important;
+}
