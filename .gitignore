@@ -105,5 +105,5 @@ dmypy.json
 # Docker
 .dockerignore
 Dockerfile*.bak
-.chainlit
-.gemini
+.chainlit/
+.gemini/
