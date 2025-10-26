@@ -6,7 +6,6 @@ import chainlit as cl
 from openai.types.responses import ResponseTextDeltaEvent
 from chainlit.data.sql_alchemy import SQLAlchemyDataLayer
 from chainlit.types import ThreadDict
-
 # Load environment variables
 
 load_dotenv()
@@ -272,6 +271,25 @@ def auth_callback(username: str, password: str):
         )
     else:
         return None
+
+# @cl.password_auth_callback
+# def auth_callback(username: str, password: str):
+#     """Handle login authentication."""
+#     result = authenticate_user(username, password)
+    
+#     if result["success"]:
+#         user_data = result["user"]
+#         return cl.User(
+#             identifier=user_data["username"],
+#             metadata={
+#                 "role": "user",
+#                 "provider": "credentials",
+#                 "email": user_data["email"],
+#                 "user_id": user_data["id"]
+#             }
+#         )
+#     else:
+#         return None
 
 
 

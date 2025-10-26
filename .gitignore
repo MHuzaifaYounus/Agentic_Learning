@@ -107,3 +107,5 @@ dmypy.json
 Dockerfile*.bak
 .chainlit/
 .gemini/
+.chainlit
+.gemini
