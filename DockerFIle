@@ -1,18 +1,16 @@
-# Step 1: Use an official Python base image
-FROM python:3.13
+# Read the doc: https://huggingface.co/docs/hub/spaces-sdks-docker
+# you will also find guides on how best to write your Dockerfile
 
-# Step 2: Set working directory
+FROM python:3.9
+
+RUN useradd -m -u 1000 user
+USER user
+ENV PATH="/home/user/.local/bin:$PATH"
+
 WORKDIR /app
 
-# Step 3: Copy all files from your project into the container
-COPY . .
+COPY --chown=user ./requirements.txt requirements.txt
+RUN pip install --no-cache-dir --upgrade -r requirements.txt
 
-# Step 4: Install pip and dependencies
-RUN pip install --upgrade pip
-RUN pip install chainlit asyncpg openai-agents sqlalchemy python-dotenv
-
-# Step 5: Expose port (Hugging Face uses port 7860)
-EXPOSE 7860
-
-# Step 6: Command to run your Chainlit app
-CMD chainlit run main.py --host 0.0.0.0 --port 7860
+COPY --chown=user . /app
+CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "7860"]
