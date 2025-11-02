@@ -1,5 +1,5 @@
 [UI]
 public_dir = "public"
-favicon = "public/favicon.png"
-logo = "public/logo.png"
-chatbot_avatar = "public/chatbot-avatar.png" 
+favicon = "favicon.png"
+logo = "logo.png"
+chatbot_avatar = "chatbot-avatar.png"
